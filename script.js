@@ -32,7 +32,7 @@ console.log('www ' + accumulatedMonth);
 let cash = +prompt("Цель сколько заработать");
 
 
-let getTargetMonth = function(a, b){
+const getTargetMonth = function(a, b){
     return a/b;
 }
 console.log('Вы достигните цели за : ', Math.ceil(getTargetMonth(cash, accumulatedMonth)), "месяцев")
