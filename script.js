@@ -13,13 +13,13 @@ let exp2 = prompt("Введите обязательную статью расх
 let am2 = +prompt("Во сколько это обойдется?");
 
 
-let getExpensesMonth = function(a, b){
+const getExpensesMonth = function(a, b){
     return a+b;
 }
 console.log('Расход' + ' ' + +getExpensesMonth(am1, am2));
 
 
-let getAccumulatedMonth = function(a, b, c){
+const getAccumulatedMonth = function(a, b, c){
     return a-b-c;
 }
 console.log('Накопления за месяц : ' + getAccumulatedMonth(money, am1, am2));
