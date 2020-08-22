@@ -1,38 +1,57 @@
 "use strict";
-let money = +prompt("Ваш месячный доход?");
+let money;
+
+let start = function(){
+    money = prompt("Ваш месячный доход?");
+    while(isNaN(money) || money.trim() === '' || money === null){
+      money = prompt("Ваш месячный доход?");
+    }
+};
+start();
 
 
 let addExpenses = prompt("Перечислите возможные расходы за рассчитываемый период через запятую");
 addExpenses.split(', ');
 
-
 let deposit = confirm("Есть ли у вас депозит в банке?");
-let exp1 = prompt("Введите обязательную статью расходов?");
-let am1 = +prompt("Во сколько это обойдется?");
-let exp2 = prompt("Введите обязательную статью расходов?");
-let am2 = +prompt("Во сколько это обойдется?");
+// let exp1 = prompt("Введите обязательную статью расходов?");
+// let am1 = +prompt("Во сколько это обойдется?");
+// let exp2 = prompt("Введите обязательную статью расходов?");
+// let am2 = +prompt("Во сколько это обойдется?");
+
+let expenses = [];
+
+let getExpensesMonth = function(){
+    let sum = 0;
+    
+
+    for (let i = 0; i < 2; i++){
+        expenses[i] = prompt("Введите обязательную статью расходов?");
+        sum += +prompt("Во сколько это обойдется?");
+    }
+    //return a+b;
+    console.log(expenses);
+    return sum;
+};
+
+let expensesAmount = getExpensesMonth();
+console.log('Расход' + ' ' + +expensesAmount);
 
 
-const getExpensesMonth = function(a, b){
-    return a+b;
+let getAccumulatedMonth = function(a, b){
+    return a - b;
 }
-console.log('Расход' + ' ' + +getExpensesMonth(am1, am2));
+console.log('Накопления за месяц : ' + getAccumulatedMonth(money, expensesAmount));
 
 
-const getAccumulatedMonth = function(a, b, c){
-    return a-b-c;
-}
-console.log('Накопления за месяц : ' + getAccumulatedMonth(money, am1, am2));
-
-
-let accumulatedMonth = getAccumulatedMonth(money, am1, am2);
-console.log('www ' + accumulatedMonth);
+let accumulatedMonth = getAccumulatedMonth(money, expensesAmount);
+//console.log('www ' + accumulatedMonth);
 
 
 let cash = +prompt("Цель сколько заработать");
 
 
-const getTargetMonth = function(a, b){
+let getTargetMonth = function(a, b){
     return a/b;
 }
 console.log('Вы достигните цели за : ', Math.ceil(getTargetMonth(cash, accumulatedMonth)), "месяцев")
