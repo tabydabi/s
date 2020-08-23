@@ -26,21 +26,19 @@ let deposit = confirm("Есть ли у вас депозит в банке?");
 
 let expenses = [];
 
-let getExpensesMonth = function(){
+let getExpensesMonth = function() {
     let sum = 0;
     
-
     for (let i = 0; i < 2; i++){
-        expenses[i] = prompt("Введите обязательную статью расходов?");
-        do{
-        sum += +prompt("Во сколько это обойдется?");}
-        while(isNaN(sum) || sum.trim() === '' || sum === null);
-    }
-    //return a+b;
-    console.log(expenses);
-    return sum;
-};
-
+    expenses[i] = prompt("Введите обязательную статью расходов?");
+    let value
+        do {
+        value = +prompt("Во сколько это обойдется?");
+        } while(!parseInt(value));
+     sum += value
+}
+return sum;
+}
 
 
 let expensesAmount = getExpensesMonth();
@@ -63,8 +61,14 @@ let cash = +prompt("Цель сколько заработать");
 let getTargetMonth = function(a, b){
     return a/b;
 }
-console.log('Вы достигните цели за : ', Math.ceil(getTargetMonth(cash, accumulatedMonth)), "месяцев")
+if (getTargetMonth(cash, accumulatedMonth) > 0){
+    console.log('Вы достигните цели за : ', Math.ceil(getTargetMonth(cash, accumulatedMonth)), "месяцев");
+} else console.log('Вы не достигните цели ');
 
+// if (getTargetMonth > 0){
+//     console.log('Вы достигните цели за : ', Math.ceil(getTargetMonth(cash, accumulatedMonth)), "месяцев")}
+//      else console.log('Вы не достигните цели ');
+//console.log('Вы достигните цели за : ', Math.ceil(getTargetMonth(cash, accumulatedMonth)), "месяцев")
 // let period = cash / budgetMonth;
 // console.log('Вы достигните цели за : ', Math.ceil(period), "месяцев");
 
