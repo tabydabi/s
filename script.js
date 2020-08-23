@@ -1,11 +1,16 @@
 "use strict";
+// let isNumber = function(n) {
+//     return !isNaN(parseFloat(n)) && isFinite(n)
+//}
+
 let money;
 
 let start = function(){
+    do {
     money = prompt("Ваш месячный доход?");
-    while(isNaN(money) || money.trim() === '' || money === null){
-      money = prompt("Ваш месячный доход?");
-    }
+    } while(isNaN(money) || money.trim() === '' || money === null);
+      //money = prompt("Ваш месячный доход?");
+    
 };
 start();
 
@@ -27,12 +32,16 @@ let getExpensesMonth = function(){
 
     for (let i = 0; i < 2; i++){
         expenses[i] = prompt("Введите обязательную статью расходов?");
-        sum += +prompt("Во сколько это обойдется?");
+        do{
+        sum += +prompt("Во сколько это обойдется?");}
+        while(isNaN(sum) || sum.trim() === '' || sum === null);
     }
     //return a+b;
     console.log(expenses);
     return sum;
 };
+
+
 
 let expensesAmount = getExpensesMonth();
 console.log('Расход' + ' ' + +expensesAmount);
